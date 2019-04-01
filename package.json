@@ -3,9 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blueprintjs/core": "^3.14.1",
+    "@material-ui/core": "^3.9.3",
+    "blueprintjs": "0.0.8",
+    "bootstrap": "^4.3.1",
+    "faker": "^4.1.0",
+    "hide-scrollbar-react": "^1.1.6",
+    "node-sass": "^4.11.0",
     "react": "^16.8.6",
+    "react-autosize-textarea": "^7.0.0",
+    "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-outside-click-handler": "^1.2.3",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.86.0"
   },
   "scripts": {
     "start": "react-scripts start",
