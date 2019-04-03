@@ -145,7 +145,7 @@ class Home extends React.Component {
       curMainNewsIdx,
     } = this.state;
     return (
-      <List horizontal style={{marginTop:-13, cursor:"pointer"}}>
+      <List horizontal style={{cursor:"pointer"}}>
         <List.Item
           onMouseEnter={() => this.setState({mouseOnMainNewsNum:0})}
           onMouseLeave={() => this.setState({mouseOnMainNewsNum:null})}
@@ -156,9 +156,9 @@ class Home extends React.Component {
               opacity:0.3,
               //transition: "opacity 0.1s",
               position:"absolute",
-              top:'8.25vh',
+              top:50,
               width:"55vw",
-              height:"55vh",
+              height:325,
               zIndex:100,
             }} />
               
@@ -166,15 +166,14 @@ class Home extends React.Component {
 
           <div style={{
             position:"absolute",
-            top:'8.25vh',
+            top:50,
             width:"55vw",
-            height:"55vh",
           }}>
             <img
               src={mainNewsList[curMainNewsIdx].image}
               style={{
                 width:"55vw",
-                height:"55vh",
+                height:325,
                 cursor:"pointer",
               }}
               //onClick={(e) => this.handleImageClick(e, 0)}
@@ -291,23 +290,23 @@ class Home extends React.Component {
                   backgroundColor: "black",
                   opacity:0.3,
                   position:"absolute",
-                  top:'8.25vh',
+                  top:50,
                   left:"72vw",
                   width:"28vw",
-                  height:"27.5vh",
+                  height:162.5,
                   zIndex:100,
                 }} />
               }
               <div style={{
                 position:"absolute",
-                top:'8.25vh',
+                top:50,
                 left:"72vw",
               }}>
                 <img
                   src="https://i.imgur.com/cTnzP2M.jpg"
                   style={{
                     width:"28vw",
-                    height:"27.5vh",
+                    height:162.5,
                     cursor:"pointer",
                   }}
                   //onClick={(e) => this.handleImageClick(e, 1)}
@@ -364,23 +363,23 @@ class Home extends React.Component {
                   backgroundColor: "black",
                   opacity:0.3,
                   position:"absolute",
-                  top:'35.75vh',
+                  top:212.5,
                   left:"72vw",
                   width:"28vw",
-                  height:"27.5vh",
+                  height:162.5,
                   zIndex:100,
                 }} />
               }
               <div style={{
                 position:"absolute",
-                top:'35.75vh',
+                top:212.5,
                 left:"72vw"
               }}>
                 <img
                   src="https://i.imgur.com/EYXWOqL.jpg"
                   style={{
                     width:"28vw",
-                    height:"27.5vh",
+                    height:162.5,
                     cursor:"pointer",
                   }}
                   //onClick={(e) => this.handleImageClick(e, 2)}
@@ -432,38 +431,44 @@ class Home extends React.Component {
     );
   }
 
-  sideBarComment = () => {
+  sideBarComment = (num) => {
     return(
-      <>
-        <div style={{borderRadius:0, width:"100%", height:"25vh", marginTop:12.5,}} >
-          <List horizontal style={{marginLeft:15}}>
-            <List.Item>
-              <Image
-                avatar
-                src="http://www.gravatar.com/avatar"
-                style={{width:30, height:30, marginTop:-15}}
-              />
-            </List.Item>
-            <List.Item>
-              <div style={{fontWeight:"bold", fontSize:12,}}>
-                Profile Name
-              </div>
-              <div style={{color:"grey", fontSize:12}}>
-                19m ago
-              </div>
-            </List.Item>
-          </List>
-          <div style={{marginLeft:15, marginTop:5, fontSize:12, width:"85%"}}>
-            そのうち日本に来なくなるよ
-          </div>
-          <div style={{marginLeft:15, marginTop:5, fontWeight:"bold", fontSize:12, width:"85%"}}>
-            あなたが知らない「移民国家」日本の実像
-          </div>
+      <div style={{
+        borderRadius:0,
+        width:"100%",
+        height:150,
+        marginTop:num===0 ? 10:-15,
+        overflow:"hidden"
+      }}>
+        <List horizontal style={{marginLeft:15}}>
+          <List.Item>
+            <Image
+              avatar
+              src="http://www.gravatar.com/avatar"
+              style={{width:30, height:30, marginTop:-15}}
+            />
+          </List.Item>
+          <List.Item>
+            <div style={{fontWeight:"bold", fontSize:12,}}>
+              Profile Name
+            </div>
+            <div style={{color:"grey", fontSize:12}}>
+              19m ago
+            </div>
+          </List.Item>
+        </List>
+        <div style={{marginLeft:15, marginTop:5, fontSize:12, width:"85%"}}>
+          {num} &nbsp; そのうち日本に来なくなるよ
         </div>
-        <div style={{display:"flex", justifyContent:"center", marginTop:-25}}>
-          <MaterialUI_Divider  style={{width:"90%",}} />
+        <div style={{marginLeft:15, marginTop:5, fontWeight:"bold", fontSize:12, width:"85%"}}>
+          あなたが知らない「移民国家」日本の実像
         </div>
-      </>
+
+        <div style={{display:"flex", justifyContent:"center", marginTop:15}}>
+          <MaterialUI_Divider  style={{width:"90%"}} />
+        </div>
+      </div>
+      
     )
   }
 
@@ -480,24 +485,12 @@ class Home extends React.Component {
   sideBarComments = () => {
     return(
       <Scrollable
-        style={{height:"47vh", marginTop:-13}}
-        //className={styles.hideScroll}
+        style={{height:"calc(100vh - 300px)"}}
+        //style={{ height:"50vh" }}
       >
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
-        {this.sideBarComment()}
+        {[...Array(50)].map((e, i) => {
+          return this.sideBarComment(i);
+        })}
       </Scrollable>
     );
   }
@@ -509,8 +502,10 @@ class Home extends React.Component {
         elevation={0}
         style={{
           //position:"absolute",
-          marginTop:"8.25vh",
-          height:"91.75vh", width:"17vw",
+          marginTop:50,
+          //height:"91vh",
+          height:"calc(100vh - 50px)",
+          width:"17vw",
           backgroundColor:"white",
           overflow:"hidden",
           //display:"flex", justifyContent:"center",
@@ -521,7 +516,13 @@ class Home extends React.Component {
         className={styles.hideScroll}
       >
         
-        <div style={{borderRadius:0, width:"100%", height:"25vh", marginTop:25}}>
+        <div style={{
+          borderRadius:0,
+          width:"100%",
+          height:125,
+          marginTop:25,
+          overflow:"hidden",
+        }}>
           <List>
             <List.Item style={{display:"flex", justifyContent:"center",}}>
               <Image
@@ -539,10 +540,17 @@ class Home extends React.Component {
           </List>
         </div>
 
-        <MaterialUI_Divider  style={{marginTop:-25, marginBottom:12.5}} />
+        <MaterialUI_Divider />
 
-
-        <div style={{borderRadius:0, width:"100%", height:"10vh", display:"flex", justifyContent:"center"}}>
+        <div style={{
+          borderRadius:0,
+          width:"100%",
+          height:50,
+          display:"flex",
+          justifyContent:"center",
+          marginTop:15,
+          overflow:"hidden",
+        }}>
           <div>
             <div style={{fontSize:18, display:"flex", justifyContent:"center"}}>
               250
@@ -561,18 +569,30 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <MaterialUI_Divider  style={{marginTop:-12, marginBottom:12.5}} />
+        <MaterialUI_Divider />
 
-        <div style={{borderRadius:0, width:"100%", height:"10vh", display:"flex", justifyContent:"center"}}>
-          <div style={{fontSize:13, fontWeight:"bold", color:"#282828"}}>
+        <div style={{
+          borderRadius:0,
+          width:"100%",
+          height:40,
+          display:"flex",
+          justifyContent:"center",
+          overflow:"hidden",
+        }}>
+          <div style={{
+            fontSize:13,
+            fontWeight:"bold",
+            color:"#282828",
+            marginTop:11,
+          }}>
             マイニュース
           </div>
-          <div style={{marginLeft:70}}>
-            <Icon name="chevron right" />
+          <div style={{marginLeft:70,}}>
+            <Icon name="chevron right" style={{marginTop:11}} />
           </div>
         </div>
 
-        <MaterialUI_Divider  style={{marginTop:-25, marginBottom:12.5}} />
+        <MaterialUI_Divider />
 
         {this.sideBarComments()}
 

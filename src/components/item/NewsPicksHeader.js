@@ -42,16 +42,20 @@ class MainHeader extends React.Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   trigger = (
-    <span style={{color:"white",}}>
-      <Image avatar src={faker.internet.avatar()} /> {faker.name.findName()}
-    </span>
+    <>
+      <span style={{color:"white",}}>
+        <Image
+          avatar
+          src={faker.internet.avatar()}
+          style={{marginTop:-2.5, marginRight:10}}
+        />
+      </span>
+      <div style={{color:"white", display:"inline",}}>
+        {faker.name.findName()}
+      </div>
+    </>
   );
 
-  options = [
-    { key: 'user', text: 'Account', icon: 'user' },
-    { key: 'settings', text: 'Settings', icon: 'settings' },
-    { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
-  ];
 
   render() {
     const { activeItem } = this.state;
@@ -61,24 +65,24 @@ class MainHeader extends React.Component {
         borderRadius:0,
         position: "fixed", zIndex:5000,
         width:"100vw",
-        height:'8.25vh',
-        backgroundColor:"black",
+        height:50,
+        backgroundColor:"#00008B",
         display:"inline-block",
         overflow:"hidden",
-        "box-shadow": "0px 1px 1px 1px #585858"
+        "box-shadow": "0px 2.5px 10px 0.5px #282828"
       }}>
      
         <div style={{color:"white", display:"inline-block"}}>
           <Icon
             name="sidebar"
-            style={{fontSize:"5.25vh", marginTop:"2.5vh", marginLeft:20}}
+            style={{fontSize:40, marginTop:17, marginLeft:20}}
           />
         </div>
         
 
 
         
-        <div style={{marginTop:"-6.2vh", marginLeft:"14vh"}}>
+        <div style={{marginTop:-49.5, marginLeft:90}}>
           <div className="ui search" style={{display:"inline-block"}} >
             <div className="ui icon input">
               <i className="search icon" style={{color:"white", display:"inline-block"}} />
@@ -104,34 +108,64 @@ class MainHeader extends React.Component {
             top: "25%",
             "-ms-transform": "translateY(-50%)",
             "transform": "translateY(-50%)",
-            height:"4vh",
+            height:25,
             width:"auto",
             marginTop:13,
             display:"inline-block"
           }}
         />
 
-        <div style={{color:"white", display:"inline-block", float:"right",  marginRight:15, marginTop:-25}}>
+        <div style={{
+          color:"white",
+          display:"inline-block",
+          float:"right",
+          marginRight:30,
+          marginTop:-26.5
+        }}>
           <Icon
             name="add"
-            style={{fontSize:"5.25vh",}}
+            style={{fontSize:25,}}
           />
         </div>
 
-        <div style={{color:"white", display:"inline-block", float:"right", marginRight:15, marginTop:-25}}>
+        <div style={{
+          color:"white",
+          display:"inline-block",
+          float:"right",
+          marginRight:90,
+          marginTop:-26.5
+        }}>
           <Icon
             name="bell outline"
-            style={{fontSize:"5.25vh",}}
+            style={{fontSize:25,}}
           />
         </div>
         
         <Dropdown
           trigger={this.trigger}
           pointing='top right'
-          icon={<Icon name="dropdown" style={{color:"white",}} />}
-          style={{marginTop:-27.5, display:"inline-block", float:"right", marginRight:30}}
+          icon={
+            <Icon
+              name="dropdown"
+              style={{color:"white",}}
+            />
+          }
+          style={{
+            marginTop:-28,
+            display:"inline-block",
+            float:"right",
+            marginRight:155,
+            //zIndex:9000
+          }}
         >
-          <Dropdown.Menu style={{width:200, cursor:"pointer"}} >
+          <Dropdown.Menu
+            style={{
+              width:200,
+              cursor:"pointer",
+              position:"absolute",
+              zIndex:9000
+            }}
+          >
           
             <Dropdown.Item
               content='マイピックス'
@@ -177,13 +211,13 @@ class MainHeader extends React.Component {
 
 const styles = {
   input: {
-    top: "50%",
+    //top: "50%",
     //"-ms-transform": "translateY(-50%)",
     //"transform": "translateY(-50%)",
     width:"25vw",
     backgroundColor:"#2F4F4F",
     color:"white",
-    height:"5.25vh",
+    height:35,
     borderColor:"transparent",
     '::-webkit-input-placeholder': {
       color: "white"
